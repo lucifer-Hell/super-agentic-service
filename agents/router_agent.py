@@ -13,7 +13,8 @@ supervisor = create_supervisor(
         "- a joke agent. Assign joke tasks to this agent\n"
         "- a greet agent. Assign greeting related tasks to this agent\n"
         "Assign work to one agent at a time, do not call agents in parallel.\n"
-        "Do not do any work yourself."
+        "Do not do any work yourself.\n"
+        "User input: {input}\n"
     ),
-    add_handoff_back_messages=True,
+    add_handoff_back_messages=False,
 ).compile()
