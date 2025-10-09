@@ -17,9 +17,9 @@ context.load_verify_locations(cert_path)
 custom_headers = {
     "x-api-key": os.getenv("OPENAI_API_KEY"),
     "Content-Type": "application/json",
-    "WM_CONSUMER.ID": "a439ec1d-6c3c-4b95-b134-b84c293ef841",
-    "WM_SVC.NAME": "WMTLLMGATEWAY",
-    "WM_SVC.ENV": "stage"
+    "WM_CONSUMER.ID": os.getenv("WM_CONSUMER.ID"),
+    "WM_SVC.NAME": os.getenv("WM_SVC.NAME"),
+    "WM_SVC.ENV": os.getenv("WM_SVC.ENV"),
 }
 http_client = httpx.Client(verify=context, headers=custom_headers)
 async_client = httpx.AsyncClient(verify=context, headers=custom_headers)
