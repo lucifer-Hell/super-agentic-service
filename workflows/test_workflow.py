@@ -4,7 +4,11 @@ from agents.router_agent import supervisor
 # Main workflow function using LLM-powered supervisor
 
 def test_workflow(user_message:str):
-    result = supervisor.invoke({"input": user_message})
+    result = supervisor.invoke({
+        "messages": [
+            {"role": "user", "content": user_message}
+        ]
+    })
     print(result)
     # Ensure result is a dict with 'messages' key containing a non-empty list
     if isinstance(result, dict) and "messages" in result:
