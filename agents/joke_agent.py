@@ -1,4 +1,3 @@
-from langgraph.prebuilt import create_react_agent
 import random
 
 # Joke agent: returns a random joke
@@ -12,9 +11,18 @@ def joke_agent(input_state):
     ]
     return {"joke": random.choice(jokes)}
 
-agent = create_react_agent(
-    function=joke_agent,
-    name="joke_agent",
-    description="Tells a random joke to the user."
-)
+class SimpleAgent:
+    def __init__(self, name, description, func):
+        self.name = name
+        self.description = description
+        self.func = func
+    def run(self, input_state):
+        return self.func(input_state)
+    def invoke(self, input_state):
+        return self.run(input_state)
 
+agent = SimpleAgent(
+    name="joke_agent",
+    description="Tells a random joke.",
+    func=joke_agent
+)

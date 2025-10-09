@@ -13,9 +13,9 @@ from agents.joke_agent import agent as joke_agent
 
 supervisor = create_supervisor(
     model=openai_llm.llm,
-    agents=[ greet_agent, joke_agent],
+    agents=[greet_agent, joke_agent],
     prompt=(
-        "You are a supervisor managing four agents:\n"
+        "You are a supervisor managing two agents:\n"
         "- a greet agent. Assign greeting tasks to this agent. If the user's name is not provided, ask for it.\n"
         "- a joke agent. Assign joke-telling tasks to this agent.\n"
         "Assign work to one agent at a time, do not call agents in parallel.\n"
