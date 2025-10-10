@@ -16,7 +16,6 @@ supervisor = create_supervisor(
         "Do not do any work yourself.\n"
         "Do not ask questions back to the user.\n"
         "If you are not sure, make your best guess. If the user asks for a joke, humor, or something funny, always call the joke agent.\n"
-        "User input: {input}\n"
     ),
     add_handoff_back_messages=False,
 ).compile()
