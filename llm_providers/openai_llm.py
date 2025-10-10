@@ -33,5 +33,3 @@ llm = AzureChatOpenAI(
                     async_client=async_client,
                     temperature=0
 )
-
-# llm.bind_tools(all_tools,tool_choice="required", strict = True)
