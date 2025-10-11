@@ -22,7 +22,7 @@ async def invoke_workflow(request: WorkflowRequestDto):
             user_input=request.user_input,
             session_id=request.session_id
         )
-        return response
+        return {"response":  response }
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:

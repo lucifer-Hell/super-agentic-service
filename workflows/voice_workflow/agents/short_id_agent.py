@@ -61,7 +61,7 @@ def short_id_agent_node(state: VoiceState)-> dict:
     else:
         return{
             "messages": AIMessage(
-                content="I could not validate your short id. Can you please provide your short id to proceed with "
+                content="Can you please provide your short id to proceed with "
             )
         }
 

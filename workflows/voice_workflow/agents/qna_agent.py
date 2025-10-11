@@ -12,7 +12,7 @@ from workflows.voice_workflow.state.voice_state import VoiceState
 class QnAAgentResponse(BaseModel):
     # Response fields for QnA agent
     response: str = Field(
-        description="The best possible response to the user's query"
+        description="this field must have the same response which agent gives"
     )
 
 prompt = """
@@ -20,6 +20,7 @@ You are a QnA Agent. Your task is to respond to the user's query in the best pos
 
 Guidelines:
 - Provide a clear and concise response to the user's query.
+- Avoid adding follow-up questions, conversational elements, or emojis.
 - Ensure the response is helpful and directly addresses the user's question.
 
 Examples:

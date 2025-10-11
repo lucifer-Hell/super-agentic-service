@@ -1,4 +1,4 @@
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import HumanMessage, AIMessage
 
 from workflows.voice_workflow.voice_workflow import voice_workflow
 from workflows.voice_workflow.state.voice_state import VoiceState
@@ -20,6 +20,9 @@ class WorkflowService:
             response = voice_workflow.invoke({
                 "messages": [HumanMessage(content=user_input)],
             }, config=config)
+            # Always return the last message in the response
+            response : AIMessage = response["messages"][-1]
+            return response.content
         else:
             raise ValueError(f"Unknown workflow: {workflow_name}")
 
