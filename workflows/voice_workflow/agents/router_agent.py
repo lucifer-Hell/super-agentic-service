@@ -58,7 +58,7 @@ router_agent = create_react_agent(
 
 
 # create node for router agent
-def router_agent_node(state: VoiceState):
+def router_agent_node(state: VoiceState)->dict:
     if not state.isShortIdValidated:
         return {"call_agent": "short_id_agent"}
 
