@@ -33,6 +33,10 @@ voice_workflow.add_edge("short_id_agent", END)
 voice_workflow.add_edge("qna_agent", END)
 voice_workflow.add_edge("ticket_agent", END)
 
-# Compile
+# define storage
 memory = InMemorySaver()
+
+# compile workflow
 voice_workflow = voice_workflow.compile(checkpointer=memory)
+
+
