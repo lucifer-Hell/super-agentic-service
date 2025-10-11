@@ -12,9 +12,9 @@ class VoiceState(BaseModel):
         description="The short identification number of the user",
         default=None,
     )
-    isNamePresent: bool = Field(
-        title="isNamePresent",
-        description="Whether the name of the user is present",
+    isShortIdValidated: bool = Field(
+        title="isShortIdValidated",
+        description="Whether the short id of the user is validate or not",
         default=False,
     )
     messages: Annotated[Sequence[BaseMessage], add_messages] = Field(
