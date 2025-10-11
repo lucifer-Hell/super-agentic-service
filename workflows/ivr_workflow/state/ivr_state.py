@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 
 # Graph state
 class IVRState(BaseModel):
-    name: str = Field(
+    name: str | None = Field(
         title="name",
         description="The name of the user",
         default=None,
@@ -25,7 +25,7 @@ class IVRState(BaseModel):
 
     call_agent:str = Field(
         title="call_agent",
-        description="The agent that called the conversation",
+        description="The next agent to be called",
         default=None
     )
 

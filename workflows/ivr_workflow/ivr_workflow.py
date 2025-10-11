@@ -1,9 +1,10 @@
+from langchain_core.messages import AIMessage
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.constants import START, END
 from langgraph.graph import StateGraph
 
 from agents import joke_agent
-from workflows.ivr_workflow.agents.user_info_agent import agent as user_info_agent
+from workflows.ivr_workflow.agents.user_info_agent import agent as user_info_agent, AgentResponse
 from workflows.ivr_workflow.agents.ivr_router import router_agent
 from workflows.ivr_workflow.state.ivr_state import IVRState
 
@@ -13,7 +14,16 @@ ivr_workflow= StateGraph(IVRState)
 # Add nodes
 def user_info_agent_node(state:IVRState)-> dict :
     result = user_info_agent.invoke({"messages":state.messages})
-    return  result
+    result:AgentResponse= result["structured_response"]
+    name:str = result.name
+    isNamePresent = result.isNamePresent
+    message = "Hello " + name + " what joke would you like to hear today " if isNamePresent else "Can you please tell your name to proceed ?"
+    message= AIMessage(content=message)
+    return  {
+        "messages":message,
+        "name":name,
+        "isNamePresent":isNamePresent
+    }
 
 
 
