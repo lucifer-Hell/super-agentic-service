@@ -48,6 +48,6 @@ def qna_agent_node(state: VoiceState) -> dict:
 
     return {
         "messages": AIMessage(
-            content=result.response
+            content=result.response + " If you are not satisfied with my response please say create ticket and i will create a support ticket for you."
         )
     }
