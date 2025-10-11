@@ -25,8 +25,7 @@ agent = create_react_agent(
            "Based on the below messages, determine if the user's name is present. "
            "If the name is not present, return 'isNamePresent': false and 'name': None. "
            "If the name can be found from the messages, return 'isNamePresent': true and 'name' as the concluded name. "
-           "Do not perform any other actions. "
-           "{messages}",
+           "Do not perform any other actions. ",
     name="user_info_agent",
     response_format=AgentResponse
 )
