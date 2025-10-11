@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from langchain_core.messages import HumanMessage
 from pydantic import BaseModel
 
-from workflows.ivr_workflow.ivr_workflow import ivr_workflow
+from workflows.test_workflow.ivr_workflow import ivr_workflow
 
 app = FastAPI()
 
