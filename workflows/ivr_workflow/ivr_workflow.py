@@ -3,7 +3,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.constants import START, END
 from langgraph.graph import StateGraph
 
-from agents import joke_agent
+from commons.agents import joke_agent
 from workflows.ivr_workflow.agents.user_info_agent import agent as user_info_agent, AgentResponse
 from workflows.ivr_workflow.agents.ivr_router import router_agent
 from workflows.ivr_workflow.state.ivr_state import IVRState

@@ -1,6 +1,6 @@
 import llm_providers.openai_llm as openai_llm
-from agents.greet_agent import agent as greet_agent
-from agents.joke_agent import agent as joke_agent
+from commons.agents.greet_agent import agent as greet_agent
+from commons.agents.joke_agent import agent as joke_agent
 
 
 from langgraph_supervisor import create_supervisor
