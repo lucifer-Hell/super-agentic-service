@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import httpx
-from langchain_openai import AzureChatOpenAI
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 
 cert_path = os.getenv("SSL_CERTIFICATE_PATH")
 if not cert_path:
@@ -32,4 +32,13 @@ llm = AzureChatOpenAI(
                     http_client=http_client,
                     async_client=async_client,
                     temperature=0
+)
+
+embeddings = AzureOpenAIEmbeddings(
+    azure_endpoint=os.environ["AZURE_ENDPOINT"],
+    api_version=os.getenv("API_VERSION"),
+    model="text-embedding-3-large",
+    api_key=os.getenv("OPENAI_API_KEY"),
+    http_client=http_client,
+    async_client=async_client
 )
