@@ -1,4 +1,4 @@
-from workflows.test_workflow.state.ivr_state import IVRState
+from workflow.test_workflow.state.ivr_state import IVRState
 
 
 def router_agent(state:IVRState):

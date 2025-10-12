@@ -4,9 +4,9 @@ from langgraph.constants import START, END
 from langgraph.graph import StateGraph
 
 from commons.agents.test_agents import joke_agent
-from workflows.test_workflow.agents.user_info_agent import agent as user_info_agent, AgentResponse
-from workflows.test_workflow.agents.ivr_router import router_agent
-from workflows.test_workflow.state.ivr_state import IVRState
+from workflow.test_workflow.agents.user_info_agent import agent as user_info_agent, AgentResponse
+from workflow.test_workflow.agents.ivr_router import router_agent
+from workflow.test_workflow.state.ivr_state import IVRState
 
 # Intitalize workflow with state
 ivr_workflow= StateGraph(IVRState)

@@ -1,4 +1,4 @@
-from workflows.chat_workflow.tools.retrieve_info import retrieve_info
+from workflow.chat_workflow.tools.retrieve_info import retrieve_info
 
 class ChatAgent:
     """

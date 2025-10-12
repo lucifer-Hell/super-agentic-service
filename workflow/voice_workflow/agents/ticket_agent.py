@@ -6,7 +6,7 @@ from langgraph.prebuilt import create_react_agent
 from pydantic import BaseModel, Field
 
 from llm_providers import openai_llm
-from workflows.voice_workflow.state.voice_state import VoiceState
+from workflow.voice_workflow.state.voice_state import VoiceState
 
 # Response Model for Ticket Content Extract Agent
 class TicketContentExtractResponse(BaseModel):

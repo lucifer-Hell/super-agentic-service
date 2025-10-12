@@ -1,6 +1,6 @@
 from langchain_core.messages import AIMessage
 
-from workflows.voice_workflow.state.voice_state import VoiceState
+from workflow.voice_workflow.state.voice_state import VoiceState
 
 
 def end_call_agent_node(state: VoiceState) -> dict:

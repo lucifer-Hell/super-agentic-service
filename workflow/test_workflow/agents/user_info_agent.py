@@ -2,7 +2,7 @@ from langgraph.prebuilt import create_react_agent
 from pydantic import BaseModel, Field
 
 import llm_providers.openai_llm as openai_llm
-from workflows.test_workflow.tools.tools import register_user
+from workflow.test_workflow.tools.tools import register_user
 
 
 class AgentResponse(BaseModel):

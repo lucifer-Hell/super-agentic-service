@@ -1,6 +1,6 @@
 from langchain_core.tools import tool
 
-from workflows.test_workflow.state.ivr_state import IVRState
+from workflow.test_workflow.state.ivr_state import IVRState
 
 @tool
 def register_user(name: str):

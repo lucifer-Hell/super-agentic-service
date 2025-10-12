@@ -2,12 +2,12 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.constants import START, END
 from langgraph.graph import StateGraph
 
-from workflows.voice_workflow.agents.end_call_agent import end_call_agent_node
-from workflows.voice_workflow.agents.qna_agent import qna_agent_node
-from workflows.voice_workflow.agents.router_agent import router_agent_node
-from workflows.voice_workflow.agents.short_id_agent import  short_id_agent_node
-from workflows.voice_workflow.agents.ticket_agent import ticket_agent_node
-from workflows.voice_workflow.state.voice_state import VoiceState
+from workflow.voice_workflow.agents.end_call_agent import end_call_agent_node
+from workflow.voice_workflow.agents.qna_agent import qna_agent_node
+from workflow.voice_workflow.agents.router_agent import router_agent_node
+from workflow.voice_workflow.agents.short_id_agent import  short_id_agent_node
+from workflow.voice_workflow.agents.ticket_agent import ticket_agent_node
+from workflow.voice_workflow.state.voice_state import VoiceState
 
 voice_workflow = StateGraph(VoiceState)
 

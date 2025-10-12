@@ -1,7 +1,7 @@
 from langchain_core.messages import HumanMessage, AIMessage
 
-from workflows.voice_workflow.voice_workflow import voice_workflow
-from workflows.voice_workflow.state.voice_state import VoiceState
+from workflow.voice_workflow.voice_workflow import voice_workflow
+from workflow.voice_workflow.state.voice_state import VoiceState
 
 class WorkflowService:
 
