@@ -25,5 +25,3 @@ class WorkflowService:
             return response.content
         else:
             raise ValueError(f"Unknown workflow: {workflow_name}")
-
-        return response
