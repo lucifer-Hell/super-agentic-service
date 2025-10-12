@@ -13,7 +13,7 @@ from workflows.voice_workflow.state.voice_state import VoiceState
 class RouterAgentResponse(BaseModel):
     # Tell which agents should it route to
     next_agent: Literal[
-        "qna_agent", "ticket_agent"
+        "qna_agent", "ticket_agent","end_call_agent"
     ] = Field(
         description="The next agent to route to"
     )
@@ -29,6 +29,7 @@ and 'reason'. Based on the below messages, determine which agent to route to.
 The possible agents to route to are:
 1. qna_agent: for general questions and answers
 2. ticket_agent: for creating tickets
+3. end_call_agent: to end the call when the issue is resolved or no further assistance is needed
 
 Guidelines:
 - If the user is asking questions or seeking information, route to 'qna_agent'.
@@ -43,6 +44,9 @@ Examples:
 
 3. User: "I don’t understand the instructions you provided."
    Response: next_agent = 'ticket_agent', reason = 'User is not satisfied and needs further assistance.'
+
+4. User: "Thank you for your help, goodbye!"
+    Response: next_agent = 'end_call_agent', reason = 'User has indicated they are done and wants to end the call.'
 
 Do not perform any other actions.
 """
