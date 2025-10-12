@@ -9,3 +9,27 @@
 | **service/**       | API or CLI layer to expose workflows              | `workflow_server.py`, `app.py`                                    |
 | **config/**        | YAML/JSON-based configuration management          | `config.yaml`                                                     |
 | **tests/**         | Unit + integration tests                          | `test_agents.py`, `test_workflows.py`                             |
+
+## Calling the Talk API
+
+To invoke the chat workflow, use the following curl command:
+
+```bash
+curl -X POST "http://localhost:8000/v1/talk" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": {
+      "query": "hi there"
+    },
+    "conversationId": "CHAT123",
+    "requestAttributes": {
+      "flows": {
+        "entry": {
+          "ref": "CHAT_FLOW"
+        }
+      }
+    }
+  }'
+```
+
+This will send a request to the /v1/talk endpoint with the required payload structure.
