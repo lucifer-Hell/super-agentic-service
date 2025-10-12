@@ -18,19 +18,11 @@ async def talk(request: ChatTalkRequestDto)->ChatResponseDto:
     """
     response=""
     try:
-        if request.requestAttributes.flows.entry.ref.lower() == 'ivr_workflow':
-            response =  workFlowService.invoke_workflow(
-                workflow_name='ivr_workflow',
-                user_input= request.message.query,
-                session_id=request.conversationId
-            )
-        elif  request.requestAttributes.flows.entry.ref.lower() == 'chat_workflow':
-            response =  workFlowService.invoke_workflow(
-                workflow_name='chat_workflow',
-                user_input= request.message.query,
-                session_id=request.conversationId
-            )
-        # TODO HANDLE THIS PROPERLY
+        response =  workFlowService.invoke_workflow(
+            workflow_name=request.requestAttributes.flows.entry.ref,
+            user_input= request.message.query,
+            session_id=request.conversationId
+        )
         return ChatResponseDto(longText=response,shortText=response)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
