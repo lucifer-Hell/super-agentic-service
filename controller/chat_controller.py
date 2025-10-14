@@ -28,3 +28,10 @@ async def talk(request: ChatTalkRequestDto)->ChatResponseDto:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail={"error": "An unexpected error occurred.", "details": str(e)})
+
+
+
+@router.get("/health")
+def health_check():
+    """ Health check endpoint """
+    return {"status": "ok"}
