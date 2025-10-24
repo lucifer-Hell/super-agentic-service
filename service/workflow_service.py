@@ -1,5 +1,6 @@
 from langchain_core.messages import HumanMessage, AIMessage
 
+from workflow.cert_workflow.cert_worfklow import cert_workflow
 from workflow.voice_workflow.voice_workflow import voice_workflow
 from workflow.voice_workflow.state.voice_state import VoiceState
 
@@ -22,6 +23,15 @@ class WorkflowService:
             }, config=config)
             # Always return the last message in the response
             response : AIMessage = response["messages"][-1]
+            return response.content
+        elif workflow_name == "cert_workflow":
+            # Select the workflow to invoke
+            config = {"configurable": {"thread_id": session_id}}
+            response = cert_workflow.invoke({
+                "messages": [HumanMessage(content=user_input)],
+            }, config=config)
+            # Always return the last message in the response
+            response: AIMessage = response["messages"][-1]
             return response.content
         else:
             raise ValueError(f"Unknown workflow: {workflow_name}")

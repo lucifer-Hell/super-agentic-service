@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 
 from llm_providers import openai_llm
 from service.retriever_service import RetrieverService
+from workflow.cert_workflow.states.cert_state import ChatState
 from workflow.voice_workflow.state.voice_state import VoiceState
 from langchain.tools import tool
 
@@ -58,7 +59,7 @@ qna_agent = create_react_agent(
     response_format=QnAAgentResponse
 )
 
-def qna_agent_node(state: VoiceState) -> dict:
+def qna_agent_node(state: ChatState) -> dict:
     """"""
     # Get the response from the QnA agent
     result = qna_agent.invoke({"messages": state.messages})
