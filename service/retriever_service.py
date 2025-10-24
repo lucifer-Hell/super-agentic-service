@@ -5,8 +5,8 @@ from dto.RetreverResponseDto import Fact
 
 
 class RetrieverService:
-    def __init__(self, endpoint_url: str):
-        self.endpoint_url = endpoint_url
+    def __init__(self):
+        self.endpoint_url = "http://default-url.com"
 
     def retrieve(self, query: str, domain_id: str, user_id: str = "user", channel_id: str = "default", conversation_id: str = "conv") -> List[Fact]:
         client_info = {
@@ -36,4 +36,17 @@ class RetrieverService:
             # Log or handle errors as needed
             print("exception occurred while retrieving ", e)
             return []
+
+    def retrieve_data(self,query:str) -> List[dict]:
+
+        return [
+            {
+                "content": "Sample fact content",
+                "meta": {"source": "Sample source"}
+            },
+            {
+                "content": "Another fact content",
+                "meta": {"source": "Another source"}
+            }
+        ]
 
