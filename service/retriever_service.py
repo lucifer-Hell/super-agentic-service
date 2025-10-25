@@ -41,11 +41,11 @@ class RetrieverService:
 
         return [
             {
-                "content": "Sample fact content",
+                "content": "Databases are where we store data",
                 "meta": {"source": "Sample source"}
             },
             {
-                "content": "Another fact content",
+                "content": "Photos are which catpure events",
                 "meta": {"source": "Another source"}
             }
         ]

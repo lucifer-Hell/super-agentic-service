@@ -33,22 +33,8 @@ def retrieve_context(query:str) -> str:
     if not results:
         return "No information found."
     formatted = "\n".join([r["content"] for r in results])
-    # return f"Here are some facts I found:\n{formatted}"
-    return f"Photosynthesis is the process of creating a photo base(Source: ScienceKids)"
+    return f"Here are some facts I found:\n{formatted}"
 
-
-prompt = """
-You are a helpful QnA Agent for children. Your job is to answer using only what your tools return.
-
-VERY IMPORTANT:
-- Read carefully the information that tools return (after "Observation:").
-- Use those facts directly in your answer.
-- Do not answer from your own knowledge if the tool returns data.
-- If tool returns empty or 'No information found', then say:
-    response: "At the moment I don't have any answer for this."
-    has_answer: False
-...
-"""
 
 
 qna_agent = create_react_agent(
@@ -61,28 +47,6 @@ qna_agent = create_react_agent(
     response_format=QnAAgentResponse,
     debug=True,
 )
-
-
-
-# def qna_agent_node(state: ChatState) -> dict:
-#     """"""
-#     # Get the response from the QnA agent
-#     # TODO THIS ISN'T WORKING
-#     result = qna_agent.invoke({'messages': state.messages})
-#     result: QnAAgentResponse = result["structured_response"]
-#     if result.has_answer:
-#         return {
-#             "messages": AIMessage(
-#                 content=result.response
-#             )
-#         }
-#     else:
-#         return {
-#         "messages": AIMessage(
-#         content="As of now i don't have answer , is there any other question i can help"
-#          )
-#     }
-
 
 
 def qna_agent_node(state: ChatState) -> dict:
@@ -114,22 +78,23 @@ def qna_agent_node(state: ChatState) -> dict:
         for m in messages
     ])
 
-    grounded_prompt = f"""
-You are a friendly children's Q&A assistant.
-You must answer using ONLY the information inside the 'Context' section.
-If the context does not contain an answer, say:
-    response: "At the moment I don't have any answer for this."
-    has_answer: False
-
-Be simple, kind, and curious.
-
-Conversation so far:
-{conversation_text}
-
-Context:
-{context}
-
-Now answer the last user question again, grounding your answer strictly in the Context.
+    grounded_prompt = \
+    f"""
+    You are a friendly children's Q&A assistant.
+    You must answer using ONLY the information inside the 'Context' section.
+    If the context does not contain an answer, say:
+        response: "At the moment I don't have any answer for this."
+        has_answer: False
+    
+    Be simple, kind, and curious.
+    
+    Conversation so far:
+    {conversation_text}
+    
+    Context:
+    {context}
+    
+    Now answer the last user question again, grounding your answer strictly in the Context.
     """
 
     # --- Step 4: structured call ---
