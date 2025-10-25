@@ -5,6 +5,18 @@ from langgraph.graph import add_messages
 from pydantic import BaseModel, Field
 
 
+class AgentResponseDto(BaseModel):
+    content: str = Field(
+        title="content",
+        description="The content from the agent",
+    )
+    next_agent: str = Field(
+        title="next_agent",
+        description="The next agent to call",
+    )
+
+
+
 class ChatState(BaseModel):
 
     messages: Annotated[Sequence[BaseMessage], add_messages] = Field(
@@ -16,6 +28,7 @@ class ChatState(BaseModel):
     userName: str = Field(
         title="name",
         description="The name of the user",
+        default=""
     )
 
     language: str = Field(
@@ -27,11 +40,19 @@ class ChatState(BaseModel):
     voice_response: str = Field(
         title="voice response",
         description="The voice response of the ai",
+        default=""
     )
 
     html_response: str = Field(
         title="visual response",
         description="The html response of the ai",
+        default=""
+    )
+
+    agent_response: AgentResponseDto = Field(
+        title="agent response",
+        description="The contains response from agent and the next agent to call",
+        default=None
     )
 
 
